@@ -8,19 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Added click event listener to summarize button
+  // Add click event listener to summarize button
   summarizeBtn.addEventListener("click", () => {
     // Reset status and summary
     status.innerText = "Fetching page URL...";
-    summaryContainer.innerText = "Generating summary...";
+    summaryContainer.innerHTML = "<p>Generating summary...</p>";
 
-    // get the current tab's URL
+    // First, get the current tab's URL
     chrome.runtime.sendMessage(
       { action: "getCurrentTabUrl" },
       async (response) => {
         if (!response || response.error) {
           status.innerText = "Failed to get page URL.";
-          summaryContainer.innerText = response?.error || "No URL received";
+          summaryContainer.innerHTML = `<p>${
+            response?.error || "No URL received"
+          }</p>`;
           console.error(response?.error || "No URL received");
           return;
         }
@@ -30,17 +32,37 @@ document.addEventListener("DOMContentLoaded", () => {
           const summary = await summarizeContent(response.url);
 
           status.style.display = "none";
-          summaryContainer.innerText = summary;
+
+          // Convert summary to bullet points if it's not already in HTML format
+          const formattedSummary = summary.includes("<ul>")
+            ? summary
+            : formatToBulletPoints(summary);
+
+          summaryContainer.innerHTML = formattedSummary;
         } catch (error) {
           console.error("Error summarizing content:", error);
           status.style.display = "block";
           status.innerText = "Error summarizing content.";
-          summaryContainer.innerText = `Error: ${error.message}`;
+          summaryContainer.innerHTML = `<p>Error: ${error.message}</p>`;
         }
       }
     );
   });
 });
+
+// Function to convert text to bullet points
+function formatToBulletPoints(text) {
+  // Split the text by newline and filter out empty lines
+  const lines = text
+    .split("\n")
+    .filter((line) => line.trim() !== "")
+    .map((line) => line.replace(/^-\s*/, "").trim())
+    .filter((line) => line.length > 0);
+
+  // Create an HTML unordered list
+  const bulletPoints = lines.map((line) => `<li>${line}</li>`).join("");
+  return `<ul>${bulletPoints}</ul>`;
+}
 
 // Function to send URL to the server for summarization
 async function summarizeContent(url) {
