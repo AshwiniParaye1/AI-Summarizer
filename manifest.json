@@ -7,7 +7,12 @@
   "host_permissions": ["http://localhost:3000/*", "https://*/*"],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Summarize this Page"
+    "default_title": "Summarize this Page",
+    "default_icon": {
+      "16": "./icon/ai-summary.png",
+      "48": "./icon/ai-summary.png",
+      "128": "./icon/ai-summary.png"
+    }
   },
   "background": {
     "service_worker": "background.js"
