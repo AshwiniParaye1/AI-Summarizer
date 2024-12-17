@@ -1,20 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "AI Article Summarizer",
-  "version": "1.0",
-  "description": "Summarize articles using AI",
-  "permissions": ["activeTab", "storage"],
+  "name": "Webpage Summarizer",
+  "version": "1.1",
+  "description": "Summarize content from the current webpage using AI.",
+  "permissions": ["activeTab", "scripting", "tabs"],
+  "host_permissions": ["http://localhost:3000/*", "https://*/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Summarize this Page"
+  },
   "background": {
     "service_worker": "background.js"
-  },
-  "action": {
-    "default_popup": "popup.html"
-  },
-  "host_permissions": ["http://*/*", "https://*/*"],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ]
+  }
 }
