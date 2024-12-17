@@ -3,22 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Webpage Summarizer</title>
+    <title>WebPage Summarizer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>AI Webpage Summarizer</h1>
+    <div class="container">
+      <h1>WebPage Summarizer</h1>
 
-    <!-- Status display -->
-    <p id="status">Ready to summarize</p>
+      <p id="status">Ready to generate summary</p>
 
-    <!-- Summarize Button -->
-    <button id="summarize-btn">Summarize This Page</button>
+      <button id="summarize-btn">Summarize Page</button>
 
-    <!-- Summary container -->
-    <div id="summary-container">
-      <h2>Summary:</h2>
-      <p id="summary">Click 'Summarize' to generate summary.</p>
+      <div id="summary-container">
+        <p id="summary">
+          Click 'Summarize' to generate a concise summary of the webpage.
+        </p>
+      </div>
     </div>
 
     <script src="popup.js"></script>
