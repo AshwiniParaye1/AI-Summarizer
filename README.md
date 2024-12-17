@@ -1,6 +1,6 @@
-## <img width="380" alt="Screenshot 2024-12-17 at 3 50 19 PM" src="https://github.com/user-attachments/assets/1fa16223-dc00-404d-8fdf-e656f4fc7def" />
-
 🚀 Webpage Summarizer Chrome Extension
+
+## <img width="380" alt="Screenshot 2024-12-17 at 3 50 19 PM" src="https://github.com/user-attachments/assets/1fa16223-dc00-404d-8fdf-e656f4fc7def" />
 
 **Webpage Summarizer** is a Chrome extension that allows you to generate concise summaries of the content from any webpage using AI. Whether you're short on time or need quick insights, this tool is here to help! ✨
 
